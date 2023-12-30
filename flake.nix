@@ -12,7 +12,8 @@
           bashInteractive
           nodejs
           nodePackages_latest.svelte-language-server
-          nodePackages_latest.vercel
+          nodePackages_latest.wrangler
+          lsof
         ];
       };
     });
