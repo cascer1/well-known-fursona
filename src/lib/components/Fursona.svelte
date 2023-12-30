@@ -64,12 +64,14 @@
 		<p class="mb-3 text-center">{fursona.age}</p>
 	{/if}
 	<div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+	  {#if fursona.colors}
 		{#each fursona.colors as color}
 			<div class="m-4 flex flex-col items-center bg-white dark:bg-slate-500 rounded">
 				<div class="color-square mb-2" style="background-color: {color};" />
 				<p class="text-sm font-mono">{color}</p>
 			</div>
-		{/each}
+		  {/each}
+		{/if}
 	</div>
 	{#if fursona.ref}
 		<a
