@@ -1,3 +1,22 @@
 name = "well-known-fursona"
-compatibility_date = "2023-12-21"
+compatibility_date = "2026-02-09"
 
+main = ".svelte-kit/cloudflare/_worker.js"
+compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "fursona.gmem.ca", custom_domain = true }
+]
+
+[assets]
+binding = "ASSETS"
+directory = ".svelte-kit/cloudflare"
+
+[build]
+command = "npm run build"
+watch_dir = ["src", "static"]
+
+[observability]
+[observability.logs]
+enabled = true
+invocation_logs = true

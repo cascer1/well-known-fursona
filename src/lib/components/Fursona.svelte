@@ -67,7 +67,7 @@
 	  {#if fursona.colors}
 		{#each fursona.colors as color}
 			<div class="m-4 flex flex-col items-center bg-white dark:bg-slate-500 rounded">
-				<div class="color-square mb-2" style="background-color: {color};" />
+				<div class="color-square mb-2" style="background-color: {color};"></div>
 				<p class="text-sm font-mono">{color}</p>
 			</div>
 		  {/each}

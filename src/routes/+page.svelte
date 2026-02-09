@@ -27,7 +27,7 @@
 			>.
 		</p>
 		<!-- Alert -->
-		<span class="hidden mb-4 text-sm text-red-600" id="alert" />
+		<span class="hidden mb-4 text-sm text-red-600" id="alert"></span>
 		<form>
 			<input
 				type="text"
