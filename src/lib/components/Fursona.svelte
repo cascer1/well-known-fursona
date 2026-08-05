@@ -7,12 +7,11 @@
 	const validation = validateFursona(fursona);
 
 	// Parse birthdate
-	if (fursona.birthdate) {
-		fursona.birthdate = new Date(fursona.birthdate);
-	}
+  const sonaBirthDate = fursona.birthdate ? new Date(fursona.birthdate) : undefined;
 
 	function toggleReasons() {
 		const reasons = document.getElementById('reasons');
+    if (!reasons) return;
 		if (reasons.classList.contains('hidden')) {
 			reasons.classList.remove('hidden');
 		} else {
@@ -40,8 +39,10 @@
 			</div>
 		</div>
 	{/if}
-	{#if fursona.avatar}
-		<img src={fursona.avatar} alt="{fursona.name} avatar image" class="rounded" />
+	{#if fursona.avatar && fursona.avatarAlt}
+		<img src={fursona.avatar} alt="{fursona.avatarAlt}" class="rounded" />
+  {:else if fursona.avatar}
+    <img src={fursona.avatar} alt="{fursona.name} avatar image" class="rounded" />
 	{/if}
 	<h1 class="text-3xl text-center leading-none md:text-3xl lg:text-3xl">
 		{fursona.name}
@@ -56,10 +57,10 @@
 		{fursona.species}
 	</h2>
 	<p class="mb-3 text-center">{fursona.description}</p>
-	{#if fursona.birthdate && fursona.age}
-		<p class="mb-3 text-center">🎂{fursona.birthdate.toLocaleDateString()} ({fursona.age})</p>
-	{:else if fursona.birthdate}
-		<p class="mb-3 text-center">🎂{fursona.birthdate.toLocaleDateString()}</p>
+	{#if sonaBirthDate && fursona.age}
+		<p class="mb-3 text-center">🎂{sonaBirthDate.toLocaleDateString()} ({fursona.age})</p>
+	{:else if sonaBirthDate}
+		<p class="mb-3 text-center">🎂{sonaBirthDate.toLocaleDateString()} ({new Date().getFullYear() - sonaBirthDate.getFullYear()})</p>
 	{:else if fursona.age}
 		<p class="mb-3 text-center">{fursona.age}</p>
 	{/if}

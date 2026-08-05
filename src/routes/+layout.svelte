@@ -15,13 +15,12 @@
 </div>
 
 <style>
-	@reference "tailwindcss";
 	:global(html) {
 		background-color: white;
 	}
 	@media (prefers-color-scheme: dark) {
 		:global(html) {
-			background-color: theme(colors.slate.800);
+			background-color: var(--color-slate-800);
 		}
 	}
 </style>
