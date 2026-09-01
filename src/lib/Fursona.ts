@@ -19,6 +19,14 @@ TypeScript type for the following JSON:
                 "#ff0000",
                 "#0f0",
                 "#00f"
+            ],
+            "gallery": [
+              {
+                "image": "http://example.com/image.png",
+                "imageAlt": "Some alt text describing the image.",
+                "imageAttribution": "An attribution for the image. Such as a link to the artist.",
+                "description": "Some description of the image."
+              }
             ]
         }
     ]
@@ -41,6 +49,14 @@ export interface Sona {
 	age?: number;
 	birthdate?: string;
 	colors?: string[];
+	gallery?: GalleryItem[];
+}
+
+export interface GalleryItem {
+	image: string;
+	imageAlt?: string;
+	imageAttribution?: string;
+	description?: string;
 }
 
 // Validate fursona
@@ -54,6 +70,18 @@ export function validateFursona(fursona: Sona): string[] {
 		reasons.push('Fursona colors is not an array');
 	if (fursona.colors && fursona.colors.some((color) => !isColor(color)))
 		reasons.push('Fursona colors contains an invalid color');
+	if (fursona.gallery) {
+		if (!Array.isArray(fursona.gallery)) reasons.push('Gallery must be an array');
+		else reasons = reasons.concat(fursona.gallery.map(validateGalleryItem).flat());
+	}
+	return reasons;
+}
+
+// Validate GalleryItem
+export function validateGalleryItem(galleryItem: GalleryItem): string[] {
+	let reasons = [];
+	if (!isURL(galleryItem.image)) reasons.push('Gallery item image is not a valid URL');
+	if (galleryItem.description && galleryItem.description.length > 250) reasons.push('Gallery item description is too long');
 	return reasons;
 }
 
