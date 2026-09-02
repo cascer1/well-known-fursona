@@ -79,7 +79,7 @@
 		<button popovertarget="popover-refsheet-{fursona.name}" class="mb-4 mt-4 text-md text-blue-500 dark:text-blue-200 underline">View Ref Sheet</button>
 		<div
 			id="popover-refsheet-{fursona.name}"
-			class="fixed inset-0 m-auto w-fit h-fit max-h-[90dvh] max-w-[90dvw] p-4 bg-white dark:bg-slate-500 border rounded-lg shadow-xl overflow-auto border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none"
+			class="fixed inset-0 m-auto w-fit h-fit max-h-[90dvh] max-w-[90dvw] p-4 bg-white dark:bg-slate-500 dark:text-white border rounded-lg shadow-xl overflow-auto border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none"
 			popover
 		>
 			<figure class="table mx-auto">
@@ -113,7 +113,7 @@
 				</div>
 				<div
 					id="popover-{image.image}"
-					class="fixed inset-0 m-auto w-fit h-fit max-h-[90dvh] max-w-[90dvw] p-4 bg-white border rounded-lg shadow-xl overflow-auto border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none"
+					class="fixed inset-0 m-auto w-fit h-fit max-h-[90dvh] max-w-[90dvw] p-4 bg-white dark:bg-slate-500 dark:text-white border rounded-lg shadow-xl overflow-auto border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none"
 					popover
 				>
 					<figure class="table mx-auto">
@@ -131,7 +131,7 @@
 								<p class="text-center text-sm wrap-break-word"> Attribution:
 								{#if isURL(image.imageAttribution)}
 									<a
-											class="text-blue-800 underline"
+											class="text-blue-800 dark:text-blue-200 underline"
 											href={image.imageAttribution}
 											target="_blank"
 											rel="noreferrer">{image.imageAttribution}</a
