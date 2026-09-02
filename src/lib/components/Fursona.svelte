@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { FursonaSchema, Sona } from '$lib/Fursona';
-	import { validateFursona } from '$lib/Fursona';
+	import { validateFursona, isURL } from '$lib/Fursona';
 
 	export let fursona = {} as Sona;
 
@@ -79,7 +79,7 @@
 		<button popovertarget="popover-refsheet-{fursona.name}" class="mb-4 mt-4 text-md text-blue-500 dark:text-blue-200 underline">View Ref Sheet</button>
 		<div
 			id="popover-refsheet-{fursona.name}"
-			class="fixed inset-0 m-auto w-fit h-fit max-h-[90dvh] max-w-[90dvw] p-4 bg-white border rounded-lg shadow-xl overflow-auto border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none"
+			class="fixed inset-0 m-auto w-fit h-fit max-h-[90dvh] max-w-[90dvw] p-4 bg-white dark:bg-slate-500 border rounded-lg shadow-xl overflow-auto border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 backdrop:bg-black/50 backdrop:backdrop-blur-sm focus:outline-none"
 			popover
 		>
 			<figure class="table mx-auto">
@@ -128,7 +128,18 @@
 								<h3 class="text-center text-xl font-bold wrap-break-word">{image.description}</h3>
 							{/if}
 							{#if image.imageAttribution}
-								<p class="text-center text-sm wrap-break-word">Attribution: {image.imageAttribution}</p>
+								<p class="text-center text-sm wrap-break-word"> Attribution:
+								{#if isURL(image.imageAttribution)}
+									<a
+											class="text-blue-800 underline"
+											href={image.imageAttribution}
+											target="_blank"
+											rel="noreferrer">{image.imageAttribution}</a
+										>
+								{:else}
+									{image.imageAttribution}
+								{/if}
+								</p>
 							{/if}
 							{#if image.imageAlt}
 								<p class="text-center text-sm wrap-break-word">Alt text: {image.imageAlt}</p>

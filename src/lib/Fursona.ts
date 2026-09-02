@@ -98,7 +98,7 @@ function isColor(color: string): boolean {
 	return /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/i.test(color);
 }
 
-function isURL(url: string): boolean {
+export function isURL(url: string): boolean {
 	try {
 		new URL(url);
 		return true;
